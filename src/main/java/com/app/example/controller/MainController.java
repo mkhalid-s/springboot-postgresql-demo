@@ -37,4 +37,14 @@ public class MainController {
 		return PAGE_INDEX;
 	}
 
+	/**
+	 * Index Point
+	 * 
+	 * @return
+	 */
+	@GetMapping("/test")
+	public String test(Model model, HttpServletRequest request) {
+		return PAGE_INDEX;
+	}
+
 }
