@@ -5,7 +5,7 @@ package com.app.example.repository;
 
 import java.math.BigInteger;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.app.example.entity.Person;
@@ -15,6 +15,6 @@ import com.app.example.entity.Person;
  *
  */
 @Repository
-public interface PersonRepository extends CrudRepository<Person, BigInteger> {
+public interface PersonRepository extends JpaRepository<Person, BigInteger> {
 
 }
