@@ -32,5 +32,5 @@ build/
 
 ### Spring Boot - Manual Config ###
 /bin
-/src/main/resources/*.properties
+##/src/main/resources/*.properties
 /src/main/front-end/node-modules
