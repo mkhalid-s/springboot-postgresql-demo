@@ -2,14 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
 <title>Spring Boot - PostgreSQL Example</title>
 </head>
 <body>
+	<div class="container"> 
+	<h3>Hello!</h3>
+	<p>Your IP : <span th:text="${ipaddress}"></span></p>
+	
+	<div class="table table-stripped" th:if="${persons}">
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Gender</th>
+				<th>Email</th>
+				<th>Date of Birth</th>
+				<th>Country of Birth</th>
+			</tr>
 
-<h3> Hello! </h3>
-
-<h5> Your IP : </h5> <span th:text="${ipaddress}"></span>
+			<tr th:each="person : ${persons}">
+				<td th:text="${person.id}">Id</td>
+				<td th:text="${person.firstName}">First Name</td>
+				<td th:text="${person.lastName}">Last Name</td>
+				<td th:text="${person.gender}">Gender</td>
+				<td th:text="${person.email}">Email</td>
+				<td th:text="${person.dateOfBirth}">Date of Birth</td>
+				<td th:text="${person.countryOfBirth}">Country of Birth</td>
+			</tr>
+		</table>
+	</div>
+	</div>
 
 </body>
 </html>
