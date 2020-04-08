@@ -1,4 +1,4 @@
 # springboot-postgresql-demo
 Example Repo
 
-![](https://github.com/mkhalid-s/springboot-postgresql-demo/workflows/Maven%20Package/badge.svg?branch=v1)
+![Java CI with Maven](https://github.com/mkhalid-s/springboot-postgresql-demo/workflows/Java%20CI%20with%20Maven/badge.svg?branch=v1)
