@@ -26,10 +26,12 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Run Test
       run: mvn test --file pom.xml
+    - name: Run cobertura
+      run: mvn cobertura:cobertura -Dcobertura.report.format=xml
     - name: Report coverage with Codecov
       uses: codecov/codecov-action@master
       with:
-        # token: ${{ secrets.CODECOV_TOKEN }}
+        token: ${{ secrets.CODECOV_TOKEN }}
         file: target/coverage.xml
         flags: unittests
     - name: Cache Maven packages
