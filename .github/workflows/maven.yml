@@ -32,8 +32,6 @@ jobs:
       uses: codecov/codecov-action@master
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        file: target/coverage.xml
-        flags: unittests
     - name: Cache Maven packages
       uses: actions/cache@v2
       with:
