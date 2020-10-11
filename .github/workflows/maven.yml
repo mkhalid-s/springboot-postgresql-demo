@@ -10,7 +10,7 @@ on:
     branches: [ v1 ]
 
 jobs:
-  CI/Package:
+  CI-Package:
 
     runs-on: ubuntu-latest
 
