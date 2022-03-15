@@ -29,4 +29,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Spring Boot - Manual Config ###
 /bin
+##/src/main/resources/*.properties
+/src/main/front-end/node-modules
