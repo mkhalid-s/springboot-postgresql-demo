@@ -44,4 +44,71 @@ jobs:
       with:
         name: Package
         path: dev
-      
+
+  CI-Package-Mac:
+
+    runs-on: flyci-macos-large-latest-m1
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Clean Install Maven
+      run: mvn clean install --file pom.xml
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+    - name: Run Test
+      run: mvn test --file pom.xml
+    - name: Run cobertura
+      run: mvn cobertura:cobertura -Dcobertura.report.format=xml
+    - name: Report coverage with Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+    - name: Cache Maven packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+    - run: mkdir dev && cp target/*.jar dev
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Package
+        path: dev
+        
+  run-name-intel-mac:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Clean Install Maven
+      run: mvn clean install --file pom.xml
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+    - name: Run Test
+      run: mvn test --file pom.xml
+    - name: Run cobertura
+      run: mvn cobertura:cobertura -Dcobertura.report.format=xml
+    - name: Report coverage with Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+    - name: Cache Maven packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+    - run: mkdir dev && cp target/*.jar dev
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Package
+        path: dev      
